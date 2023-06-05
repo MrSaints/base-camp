@@ -39,7 +39,9 @@ contract GarageManagerTest is Test {
         assertEq(myCars[1].color, "Red");
         assertEq(myCars[1].numberOfDoors, 4);
 
-        GarageManager.Car[] memory otherCars = garageManager.getUserCars(address(0xba5E00000000000000000000000000000000ba5e));
+        GarageManager.Car[] memory otherCars = garageManager.getUserCars(
+            address(0xba5E00000000000000000000000000000000ba5e)
+        );
         assertEq(otherCars.length, 2);
         assertEq(otherCars[0].make, "Ford");
         assertEq(otherCars[0].model, "Mustang");
