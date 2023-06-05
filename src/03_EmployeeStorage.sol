@@ -6,6 +6,7 @@ contract EmployeeStorage {
 
     uint16 private shares;  // 2 bytes
     uint24 private salary;  // 3 bytes
+
     uint256 public idNumber;  // 32 bytes
     string public name;  // dynamically sized
 

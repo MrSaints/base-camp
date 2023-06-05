@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 contract BasicMath {
-    function adder(uint _a, uint _b) external pure returns (uint result, bool success) {
+    function adder(uint _a, uint _b) external pure returns (uint sum, bool error) {
         unchecked {
             uint _c = _a + _b;
             if (_c < _a) {
@@ -12,7 +12,7 @@ contract BasicMath {
         }
     }
 
-    function subtractor(uint _a, uint _b) external pure returns (uint result, bool success) {
+    function subtractor(uint _a, uint _b) external pure returns (uint difference, bool error) {
         if (_b > _a) {
             return (0, true);
         }

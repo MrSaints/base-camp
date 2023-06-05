@@ -15,7 +15,7 @@ contract ArraysExercise {
     }
 
     function appendToNumbers(uint[] calldata _toAppend) external {
-        for (uint i = 0; i < _toAppend.length; i++) {
+        for (uint i; i < _toAppend.length; i++) {
             numbers.push(_toAppend[i]);
         }
     }
@@ -27,9 +27,9 @@ contract ArraysExercise {
 
     function afterY2K() external view returns (uint[] memory, address[] memory) {
         uint totalAfterY2K = 0;
-        for (uint i = 0; i < timestamps.length; i++) {
+        for (uint i; i < timestamps.length; i++) {
             if (timestamps[i] > 946702800) {
-                totalAfterY2K++;
+                ++totalAfterY2K;
             }
         }
 
@@ -38,11 +38,11 @@ contract ArraysExercise {
 
         uint counter;
 
-        for (uint i = 0; i < timestamps.length; i++) {
+        for (uint i; i < timestamps.length; i++) {
             if (timestamps[i] > 946702800) {
                 timestampsToReturn[counter] = timestamps[i];
                 sendersToReturn[counter] = senders[i];
-                counter++;
+                ++counter;
             }
         }
 
