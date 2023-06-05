@@ -53,6 +53,7 @@ contract AddressBook is Ownable {
         }
     }
 
+    // Built-in wouldn't support custom error, `ContactNotFound`.
     function getContact(
         uint _id
     ) external view returns (Contact memory) {
