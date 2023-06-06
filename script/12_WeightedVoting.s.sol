@@ -13,7 +13,7 @@ contract DeployWeightedVoting is Script {
         string memory seedPhrase = vm.envString("MNEMONIC");
         uint256 privateKey = vm.deriveKey(seedPhrase, 0);
         vm.startBroadcast(privateKey);
-        new WeightedVoting();
+        new WeightedVoting("Test Weighted Voting", "TESTWV");
         vm.stopBroadcast();
     }
 }
