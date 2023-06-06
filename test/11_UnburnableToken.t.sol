@@ -5,8 +5,6 @@ import "forge-std/Test.sol";
 
 import "../src/11_UnburnableToken.sol";
 
-contract ZeroBalance {}
-
 contract UnburnableTokenTest is Test {
     UnburnableToken public token;
 
