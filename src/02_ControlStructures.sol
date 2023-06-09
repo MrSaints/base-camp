@@ -5,15 +5,15 @@ contract ControlStructures {
     error AfterHours(uint _time);
 
     function fizzBuzz(uint _number) external pure returns (string memory) {
-        if (_number % 3 == 0 && _number % 5 == 0) {
-            return "FizzBuzz";
-        } else if (_number % 3 == 0) {
+        if (_number % 3 == 0) {
+            if (_number % 5 == 0) {
+               return "FizzBuzz";
+            }
             return "Fizz";
         } else if (_number % 5 == 0) {
             return "Buzz";
-        } else {
-            return "Splat";
         }
+        return "Splat";
     }
 
     function doNotDisturb(uint _time) external pure returns (string memory) {

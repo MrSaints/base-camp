@@ -16,6 +16,8 @@ contract BasicMath {
         if (_b > _a) {
             return (0, true);
         }
-        return (_a - _b, false);
+        unchecked {
+            return (_a - _b, false);
+        }
     }
 }

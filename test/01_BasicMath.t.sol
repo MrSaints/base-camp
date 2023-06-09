@@ -19,8 +19,20 @@ contract BasicMathTest is Test {
         assertFalse(err);
     }
 
+    function testPlusZero() public {
+        (uint res, bool err) = basicMath.adder(0, 0);
+
+        assertEq(res, 0);
+        assertFalse(err);
+    }
+
     function test1PlusMaxInt() public {
         (uint res, bool err) = basicMath.adder(1, type(uint).max);
+
+        assertEq(res, 0);
+        assertTrue(err);
+
+        (res, err) = basicMath.adder(type(uint).max, 1);
 
         assertEq(res, 0);
         assertTrue(err);
@@ -30,6 +42,13 @@ contract BasicMathTest is Test {
         (uint res, bool err) = basicMath.subtractor(2, 1);
 
         assertEq(res, 1);
+        assertFalse(err);
+    }
+
+    function testMinusZero() public {
+        (uint res, bool err) = basicMath.subtractor(0, 0);
+
+        assertEq(res, 0);
         assertFalse(err);
     }
 

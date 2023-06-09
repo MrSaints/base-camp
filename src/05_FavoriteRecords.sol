@@ -21,11 +21,10 @@ contract FavoriteRecords {
     }
 
     function addRecord(string calldata _albumName) external {
-        if (approvedRecords[_albumName]) {
-            _userFavorites[msg.sender].push(_albumName);
-        } else {
+        if (!approvedRecords[_albumName]) {
             revert NotApproved(_albumName);
         }
+        _userFavorites[msg.sender].push(_albumName);
     }
 
     function getUserFavorites(address _address) external view returns (string[] memory) {
