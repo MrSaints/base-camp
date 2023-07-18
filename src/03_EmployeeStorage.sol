@@ -26,7 +26,7 @@ contract EmployeeStorage {
     }
 
     function grantShares(uint16 _newShares) external {
-        require(_newShares <= 5000, "Too many shares");
+        require(_newShares < 5001, "Too many shares");
         uint16 _updatedShares = shares + _newShares;
         if (_updatedShares > 5000) {
             revert TooManyShares(_updatedShares);

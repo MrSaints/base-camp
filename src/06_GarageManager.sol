@@ -36,7 +36,7 @@ contract GarageManager {
 
     function getUserCars(address _user) external view returns (Car[] memory) {
         return garage[_user];
-    } 
+    }
 
     function updateCar(
         uint _index,
@@ -47,16 +47,24 @@ contract GarageManager {
     ) external {
         Car[] storage cars = garage[msg.sender];
 
-        if (_index >= cars.length || cars[_index].numberOfDoors == 0) {
+        if (_index >= cars.length) {
             revert BadCarIndex(_index);
         }
 
-        cars[_index] = Car(
-            _make,
-            _model,
-            _color,
-            _numberOfDoors
-        );
+        /*
+            Cheaper than doing:
+
+                cars[_index] = Car(
+                    _make,
+                    _model,
+                    _color,
+                    _numberOfDoors
+                );
+         */
+        cars[_index].make = _make;
+        cars[_index].model = _model;
+        cars[_index].color = _color;
+        cars[_index].numberOfDoors = _numberOfDoors;
     }
 
     function resetMyGarage() external {

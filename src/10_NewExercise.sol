@@ -39,7 +39,7 @@ contract AddressBook is Ownable {
     function deleteContact(
         uint _id
     ) external onlyOwner {
-        if (contacts[_id].id == 0 && contactIds[_id] != 0) {
+        if (bytes(contacts[_id].firstName).length == 0) {
             revert ContactNotFound(_id);
         }
 
@@ -57,7 +57,7 @@ contract AddressBook is Ownable {
     function getContact(
         uint _id
     ) external view returns (Contact memory) {
-        if (contacts[_id].id == 0 && contactIds[_id] != 0) {
+        if (bytes(contacts[_id].firstName).length == 0) {
             revert ContactNotFound(_id);
         }
 

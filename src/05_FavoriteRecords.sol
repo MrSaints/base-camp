@@ -5,33 +5,37 @@ contract FavoriteRecords {
     error NotApproved(string albumName);
 
     mapping(string => bool) public approvedRecords;
-    string[] private _approvedRecordNames;
+    // Can be immutable if we do not intend on changing it.
+    string[] private approvedRecordNames;
 
-    mapping(address => string[]) private _userFavorites;
+    mapping(address => string[]) private userFavorites;
 
     constructor(string[] memory _approvedRecords) {
-        for (uint i; i < _approvedRecords.length; i++) {
+        for (uint i; i < _approvedRecords.length;) {
             approvedRecords[_approvedRecords[i]] = true;
-            _approvedRecordNames.push(_approvedRecords[i]);
+            approvedRecordNames.push(_approvedRecords[i]);
+            unchecked {
+                ++i;
+            }
         }
     }
 
     function getApprovedRecords() external view returns (string[] memory) {
-        return _approvedRecordNames;
+        return approvedRecordNames;
     }
 
     function addRecord(string calldata _albumName) external {
         if (!approvedRecords[_albumName]) {
             revert NotApproved(_albumName);
         }
-        _userFavorites[msg.sender].push(_albumName);
+        userFavorites[msg.sender].push(_albumName);
     }
 
     function getUserFavorites(address _address) external view returns (string[] memory) {
-        return _userFavorites[_address];
+        return userFavorites[_address];
     }
 
     function resetUserFavorites() external {
-        delete _userFavorites[msg.sender];
+        delete userFavorites[msg.sender];
     }
 }
