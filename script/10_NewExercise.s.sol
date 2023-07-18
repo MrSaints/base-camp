@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 
 import "../src/10_NewExercise.sol";
 
-// forge script script/10_NewExercise.s.sol:DeployNewExercise --broadcast --verify --rpc-url base-goerli
+// ETHERSCAN_API_KEY=noop forge script script/10_NewExercise.s.sol:DeployNewExercise --broadcast --verify --rpc-url base-goerli
 contract DeployNewExercise is Script {
     function setUp() public {}
 

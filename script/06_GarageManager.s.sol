@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 
 import "../src/06_GarageManager.sol";
 
-// forge script script/06_GarageManager.s.sol:DeployGarageManager --broadcast --verify --rpc-url base-goerli
+// ETHERSCAN_API_KEY=noop forge script script/06_GarageManager.s.sol:DeployGarageManager --broadcast --verify --rpc-url base-goerli
 contract DeployGarageManager is Script {
     function setUp() public {}
 

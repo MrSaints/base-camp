@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 
 import "../src/03_EmployeeStorage.sol";
 
-// forge script script/03_EmployeeStorage.s.sol:DeployEmployeeStorage --broadcast --verify --rpc-url base-goerli
+// ETHERSCAN_API_KEY=noop forge script script/03_EmployeeStorage.s.sol:DeployEmployeeStorage --broadcast --verify --rpc-url base-goerli
 contract DeployEmployeeStorage is Script {
     function setUp() public {}
 

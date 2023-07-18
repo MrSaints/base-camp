@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 
 import "../src/11_UnburnableToken.sol";
 
-// forge script script/11_UnburnableToken.s.sol:DeployUnburnableToken --broadcast --verify --rpc-url base-goerli
+// ETHERSCAN_API_KEY=noop forge script script/11_UnburnableToken.s.sol:DeployUnburnableToken --broadcast --verify --rpc-url base-goerli
 contract DeployUnburnableToken is Script {
     function setUp() public {}
 

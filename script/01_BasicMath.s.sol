@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 
 import "../src/01_BasicMath.sol";
 
-// forge script script/01_BasicMath.s.sol:DeployBasicMath --broadcast --verify --rpc-url base-goerli
+// ETHERSCAN_API_KEY=noop forge script script/01_BasicMath.s.sol:DeployBasicMath --broadcast --verify --rpc-url base-goerli
 contract DeployBasicMath is Script {
     function setUp() public {}
 

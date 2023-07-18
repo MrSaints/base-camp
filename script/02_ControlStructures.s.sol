@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 
 import "../src/02_ControlStructures.sol";
 
-// forge script script/02_ControlStructures.s.sol:DeployControlStructures --broadcast --verify --rpc-url base-goerli
+// ETHERSCAN_API_KEY=noop forge script script/02_ControlStructures.s.sol:DeployControlStructures --broadcast --verify --rpc-url base-goerli
 contract DeployControlStructures is Script {
     function setUp() public {}
 

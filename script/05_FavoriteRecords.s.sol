@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 
 import "../src/05_FavoriteRecords.sol";
 
-// forge script script/05_FavoriteRecords.s.sol:DeployFavoriteRecords --broadcast --verify --rpc-url base-goerli
+// ETHERSCAN_API_KEY=noop forge script script/05_FavoriteRecords.s.sol:DeployFavoriteRecords --broadcast --verify --rpc-url base-goerli
 contract DeployFavoriteRecords is Script {
     function setUp() public {}
 

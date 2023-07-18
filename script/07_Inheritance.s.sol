@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 
 import "../src/07_Inheritance.sol";
 
-// forge script script/07_Inheritance.s.sol:DeployInheritance --broadcast --verify --rpc-url base-goerli
+// ETHERSCAN_API_KEY=noop forge script script/07_Inheritance.s.sol:DeployInheritance --broadcast --verify --rpc-url base-goerli
 contract DeployInheritance is Script {
     function setUp() public {}
 

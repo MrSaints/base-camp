@@ -1,6 +1,9 @@
 # base-camp
 
-Solidity solutions for [Base Camp](https://docs.base.org/base-camp/docs/welcome), the smart contract learning program, using [Foundry](https://github.com/foundry-rs/foundry).
+Solidity solutions for exercises in [Base Camp](https://docs.base.org/base-camp/docs/welcome), the smart contract learning program, using [Foundry](https://github.com/foundry-rs/foundry).
+
+This repository is intended for those who have already solved the exercises, and are looking for alternative approaches.
+Please do not use the solutions here as your own if you have not solved them. I strongly suggest attempting the exercises yourself! Otherwise, you are only cheating yourself.
 
 
 ## Getting Started
