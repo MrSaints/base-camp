@@ -57,8 +57,7 @@ contract WeightedVoting is ERC20 {
     mapping(address => bool) private claimed;
 
     constructor(string memory name_, string memory symbol_) ERC20(name_, symbol_) {
-        issues.push();
-        Issue storage burntIssue = issues[issues.length - 1];
+        Issue storage burntIssue = issues.push();
         burntIssue.issueDesc = "burnt";
         burntIssue.closed = true;
     }
@@ -81,22 +80,18 @@ contract WeightedVoting is ERC20 {
         if (_quorum > totalSupply()) {
             revert QuorumTooHigh();
         }
-        issues.push();
-        Issue storage newIssue = issues[issues.length - 1];
+        Issue storage newIssue = issues.push();
         newIssue.issueDesc = _issueDesc;
         newIssue.quorum = _quorum;
-        return issues.length - 1;
+        unchecked {
+            return issues.length - 1;
+        }
     }
 
     function getIssue(uint _id) external view returns (FormattedIssue memory) {
         Issue storage issue = issues[_id];
-        address[] memory voters = new address[](issue.voters.length());
-        for(uint i; i < issue.voters.length(); i++) {
-            voters[i] = issue.voters.at(i);
-        }
-
         return FormattedIssue({
-            voters: voters,
+            voters: issue.voters.values(),
             issueDesc: issue.issueDesc,
             quorum: issue.quorum,
             totalVotes: issue.totalVotes,
@@ -117,17 +112,21 @@ contract WeightedVoting is ERC20 {
         if (issue.voters.contains(msg.sender)) {
             revert AlreadyVoted();
         }
+        uint balance = balanceOf(msg.sender);
+        if (balance == 0) {
+            revert NoTokensHeld();
+        }
 
         issue.voters.add(msg.sender);
 
         if (_vote == Vote.AGAINST) {
-            issue.votesAgainst += balanceOf(msg.sender);
+            issue.votesAgainst += balance;
         } else if (_vote == Vote.FOR) {
-            issue.votesFor += balanceOf(msg.sender);
+            issue.votesFor += balance;
         } else {
-            issue.votesAbstain += balanceOf(msg.sender);
+            issue.votesAbstain += balance;
         }
-        issue.totalVotes += balanceOf(msg.sender);
+        issue.totalVotes += balance;
 
         if (issue.totalVotes >= issue.quorum) {
             issue.closed = true;
